@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- XML Document for Laptops By Lucas Chapman 5/27/2020 -->
+<laptops>
+	<laptop>
+		<id>1010</id>
+		<brand>Microsoft</brand>
+		<name>Business Surface Laptop 3</name>
+		<productNumber>10JCR6UKR5</productNumber>
+		<serial>LKS67BX1</serial>
+		<os>Windows 10</os>
+		<ram>999.9</ram>
+		<cpu>Intel Core i9-999GHz</cpu>
+		<storage>999.9</storage>
+		<price>999999.99</price>
+	</laptop>
+	
+	<laptop>
+		<id>1011</id>
+		<brand>Apple</brand>
+		<name>MacBook Air Pro</name>
+		<productNumber>15MNW66KRS</productNumber>
+		<serial>3QOM1AAW</serial>
+		<os>macOS</os>
+		<ram>50.5</ram>
+		<cpu>Intel Core i9-75GHz</cpu>
+		<storage>246.1</storage>
+		<price>599.99</price>
+	</laptop>
+</laptops>
