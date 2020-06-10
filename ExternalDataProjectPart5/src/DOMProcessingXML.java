@@ -74,19 +74,36 @@ public class DOMProcessingXML {
 
                 // Creates new Laptop objects
                 switch (tagName) {
-                    case "id" -> laptop.setId(Integer.parseInt(data));
-                    case "brand" -> laptop.setBrand(data);
-                    case "name" -> laptop.setName(data);
-                    case "productNumber" -> laptop.setProductNumber(data);
-                    case "serial" -> laptop.setSerial(data);
-                    case "os" -> laptop.setOs(data);
-                    case "ram" -> laptop.setRam(Double.parseDouble(data));
-                    case "cpu" -> laptop.setCpu(data);
-                    case "storage" -> laptop.setStorage(Double.parseDouble(data));
-                    case "price" -> {
+                    case "id":
+                        laptop.setId(Integer.parseInt(data));
+                        break;
+                    case "brand":
+                        laptop.setBrand(data);
+                        break;
+                    case "name":
+                        laptop.setName(data);
+                        break;
+                    case "productNumber":
+                        laptop.setProductNumber(data);
+                        break;
+                    case "serial":
+                        laptop.setSerial(data);
+                        break;
+                    case "os":
+                        laptop.setOs(data);
+                        break;
+                    case "ram":
+                        laptop.setRam(Double.parseDouble(data));
+                        break;
+                    case "cpu":
+                        laptop.setCpu(data);
+                        break;
+                    case "storage":
+                        laptop.setStorage(Double.parseDouble(data));
+                        break;
+                    case "price":
                         laptop.setPrice(Double.parseDouble(data));
                         isReady = true;
-                    }
                 }
 
                 if (isReady) {  // if object is ready to be printed
