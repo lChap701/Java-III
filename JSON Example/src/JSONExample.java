@@ -1,6 +1,11 @@
-import java.io.*;
-import org.json.simple.*;
-import org.json.simple.parser.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 /**
  * Example of program using JSON.simple library 
  * http://code.google.com/p/json-simple/ to get jar
@@ -24,12 +29,12 @@ public class JSONExample {
 			System.out.println("Parsing College");
 			String college = (String) jsonObject.get("college");
 			
-			System.out.println("College: " + college);	 
-			
-			JSONArray studentlist =  (JSONArray) jsonObject.get("students");
-				
+			System.out.println("College: " + college);
+
 			System.out.println("Parsing Array");
 
+
+			JSONArray studentlist =  (JSONArray) jsonObject.get("students");
 			for(Object s: studentlist)
 			{
 			
