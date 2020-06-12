@@ -83,7 +83,7 @@ public class Laptop {
 
     // Setters
     public void setId(int i) {
-        if (id > 0) {
+        if (i > 0) {
             id = i;
         } else {
             id = 1010;
