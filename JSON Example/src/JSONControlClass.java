@@ -30,13 +30,10 @@ public class JSONControlClass {
 
     /**
      * Processes JSON data to be use to create objects
-     * @param jsonObject passes the value in the JSONObject
+     * @param jsonObject passes the values in the JSONObject
      */
     private static void process(JSONObject jsonObject) {
-        // College
-        System.out.println("Parsing College");
-        String college = (String) jsonObject.get("college");
-        System.out.println("College: " + college);
+        college(jsonObject);
 
         System.out.println("\nParsing Array");
         JSONArray studentList = (JSONArray) jsonObject.get("students");
@@ -50,6 +47,16 @@ public class JSONControlClass {
     }
 
     /**
+     * Prints out the name of the college
+     * @param jsonObject passes the values in the JSONObject
+     */
+    private static void college(JSONObject jsonObject) {
+        System.out.println("Parsing College");
+        String college = (String) jsonObject.get("college");
+        System.out.println("College: " + college);
+    }
+
+    /**
      * Gets enough values to create Person objects
      * @param s passes the values stored in the object
      */
@@ -59,11 +66,11 @@ public class JSONControlClass {
         // Checks if a Person object should be created
         if (!persons.containsKey("major") && !persons.containsKey("graduation")) {
             Person person = new Person();
+
             person.setName((String) persons.get("name"));
             person.setAge(Math.toIntExact((Long) persons.get("age")));
             person.setGender(((String) persons.get("gender")).charAt(0));
             System.out.println("\nPersons:\n" + person.toString());
-
         }
     }
 
