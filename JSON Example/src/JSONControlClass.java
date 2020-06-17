@@ -6,6 +6,10 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Created by Lucas Chapman 6/11/2020.
+ * This class is created to process JSON data.
+ */
 public class JSONControlClass {
     public static void main(String[] args) {
         try {
@@ -29,7 +33,7 @@ public class JSONControlClass {
     }
 
     /**
-     * Processes JSON data to be use to create objects
+     * Processes JSON data to be used to create objects
      * @param jsonObject passes the values in the JSONObject
      */
     private static void process(JSONObject jsonObject) {
