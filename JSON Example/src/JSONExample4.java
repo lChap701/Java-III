@@ -1,6 +1,6 @@
-import org.json.simple.*;
-import java.io.*;
-import java.util.Formatter;
+import com.google.gson.*;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created by Lucas Chapman 6/16/2020.
@@ -8,68 +8,74 @@ import java.util.Formatter;
  */
 public class JSONExample4 {
     public static void main(String[] args) {
-        JSONObject college = createJSONObject();
-        JSONArray students = createJSONArray();
-        college.put("students", students);
-        writeFile(college);
+        Gson college = new GsonBuilder().setPrettyPrinting().create();
+        Person person = person();
+        Student students = students();
+        Graduate graduates = graduate();
+        List<Object> studentsArray = studentsArray(person, students, graduates);
+        writeFile(college, studentsArray);
+    }
+
+    private static List<Object> studentsArray(Person person, Student students, Graduate graduates) {
+        List<Object> studentsArray = new ArrayList<>();
+        studentsArray.add(person);
+        studentsArray.add(students);
+        studentsArray.add(graduates);
+        return studentsArray;
+    }
+
+    private static Person person() {
+        Person per = new Person();
+        per.setName("Betty");
+        per.setAge(18);
+        per.setGender('F');
+        return per;
     }
 
     /**
-     * Creates the JSONObject that will contain all of the data in the JSON file
-     * @return returns the values stored in the JSONObject
+     * Creates the array that will contain all of the student objects in the JSON file
+     * @return returns the values stored in the array
      */
-    private static JSONObject createJSONObject() {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("college","IHCC");
-        return jsonObject;
+    private static Student students() {
+        Student student = new Student();
+        student.setName("Bob");
+        student.setAge(22);
+        student.setGender('M');
+        List<String> majors = new ArrayList<>();
+        majors.add("\"Software Development\"");
+        majors.add("\"Robotics\"");
+        // Formats the major data
+        student.setMajor(majors.toString().substring(2, 23).concat(", " + majors.toString().substring(25, 34)));
+        return student;
     }
 
-    /**
-     * Creates the JSONArray that will contain all of the student objects
-     * @return returns the values stored in the JSONArray
-     */
-    private static JSONArray createJSONArray() {
-        JSONArray jsonArray = new JSONArray();
-
-        // 1st student
-        JSONObject student1 = new JSONObject();
-        student1.put("name", "Betty");
-        student1.put("age", 18);
-        student1.put("gender", "F");
-        jsonArray.add(student1);
-
-        // 2nd student
-        JSONObject student2 = new JSONObject();
-        student2.put("name", "Bob");
-        student2.put("age", 22);
-        student2.put("gender", "M");
-        JSONArray majors = new JSONArray();
-        majors.add("Software Development");
-        majors.add("Robotics");
-        student2.put("majors", majors);
-        jsonArray.add(student2);
-
-        // 3rd student
-        JSONObject student3 = new JSONObject();
-        student3.put("name", "Jane");
-        student3.put("age", 27);
-        student3.put("gender", "F");
-        student3.put("major", "Math");
-        student3.put("graduation", "2017");
-        jsonArray.add(student3);
-        return jsonArray;
+    private static Graduate graduate() {
+        Graduate grads = new Graduate();
+        grads.setName("Jane");
+        grads.setAge(27);
+        grads.setGender('F');
+        grads.setMajor("Math");
+        grads.setGraduationYear("2017");
+        return grads;
     }
 
     /**
      * Prints out the JSON data to the console and writes it to a file.
      * @param college passes the JSONObject that will contain all the data in the JSON file
+     * @param studentsArray
      */
-    private static void writeFile(JSONObject college) {
+    private static void writeFile(Gson college, List<Object> studentsArray) {
         try {
-            // Turns all the data in the object to a String
-            StringWriter data = new StringWriter();
-            college.writeJSONString(data);
-            String jsonText = data.toString();
+            // Turns all the data to a String
+            String jsonText = "{\"college\":\"IHCC\",";
+            jsonText += "\n \"students\":";
+            // Provides extra formatting for some data
+            jsonText += college.toJson(studentsArray).replace("GraduationYear", "graduation");
+            jsonText = jsonText.replaceFirst("major.*: ", "major\": [");
+            jsonText = jsonText.replaceAll("ment\\\\", "ment");
+            jsonText = jsonText.replaceAll(", \\\\", ", ");
+            jsonText = jsonText.replaceAll("tics.*,", "tics\"],");
+            jsonText += "}";
             System.out.println(jsonText);   // to display data to the console for testing
 
             // Writes the String data to a file

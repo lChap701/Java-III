@@ -14,8 +14,9 @@ public  class Graduate extends Student  {
     public Graduate() {
         super();
     }
-    public Graduate(String name, int age, char gender, String major) {
+    public Graduate(String name, int age, char gender, String major, String year) {
         super(name, age, gender, major);
+        setGraduationYear(year);
     }
     public int getGraduationYear() {
         return GraduationYear;
@@ -25,7 +26,7 @@ public  class Graduate extends Student  {
     }
     @Override
     public String toString() {
-        return  super.toString() + ", gaduation year=" + GraduationYear;
+        return  super.toString() + ", graduation year=" + GraduationYear;
     }
     @Override
     public final boolean equals(Object obj) {
