@@ -5,14 +5,14 @@
 <title>JSP Declarations Example</title>
 <BODY>
 <%!
-	// Uses a declaration (the symbols (top and bottom) that contain the code) to print the current date
+    // Uses a declaration (the symbols (top and bottom) that contain the code) to print the current date
     Date theDate = new Date();
-    Date getDate()
-    {
-        System.out.println( "In getDate() method" );
+
+    Date getDate() {
+        System.out.println("In getDate() method");
         return theDate;
     }
 %>
-Hello!  The time is now <%= getDate() %>
+Hello! The time is now <%= getDate() %>
 </BODY>
 </HTML>
