@@ -1,0 +1,17 @@
+<!-- Created 8/3/2020 by Lucas Chapman -->
+<!DOCTYPE HTML>
+<!-- The xmlns attribute determines which template to render in (not visible in browsers) -->
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<!-- Displays the data that was entered by the user -->
+<p th:text="'id: ' + ${greeting.id}" />
+<p th:text="'content: ' + ${greeting.content}" />
+<!-- Returns the user back to the greeting.html page -->
+<a href="/greeting">Submit another message</a>
+</body>
+</html>
