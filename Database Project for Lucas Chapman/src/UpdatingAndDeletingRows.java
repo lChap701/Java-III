@@ -185,14 +185,15 @@ public class UpdatingAndDeletingRows {
 
         System.out.println("Selecting delete row in the Laptops table to verify it was removed...\n");
 
-        try {
+        try  {
             s = connect.createStatement();
 
             s.execute("SELECT * FROM laptops WHERE id = 1000"); // select the deleted data from the table
-            System.out.println("Row still exist, DELETE FROM was unsuccessful");
+            System.out.println("Row was successfully deleted from the table");
             System.exit(1);
+
         } catch (SQLException e) {
-            System.out.println("Row was successfully deleting from the table");
+            System.out.println("Row still exists, DELETE FROM was unsuccessful");
             System.exit(1);
         }
     }

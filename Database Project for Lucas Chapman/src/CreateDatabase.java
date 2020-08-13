@@ -74,7 +74,7 @@ public class CreateDatabase {
     }
 
     /**
-     * Connects to the database signing in
+     * Connects to the database by signing in
      */
     private static void connectToDatabase() {
         // Connects to database and sets up the URL it will be under
