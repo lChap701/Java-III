@@ -1,0 +1,37 @@
+<!-- Created 8/3/2020 by Lucas Chapman -->
+<!DOCTYPE html>
+<!-- The xmlns attribute determines which template to render in (not visible in browsers) -->
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Validating Form Input</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<!-- The th:action attribute is set in a way that will handle POST requests in the PersonForm class (not visible in browsers) -->
+<!-- The th:object attribute is set in a way that will put all data that was entered in a PersonForm object (not visible in browsers) -->
+<form action="#" th:action="@{/}" th:object="${personForm}" method="post">
+    <!-- The 1st column (<td>) is for describing what the user is being prompted for -->
+    <!-- The 2nd column (<td>) is for input data -->
+    <!-- The 3rd column (<td>) is for displaying error messages -->
+    <!-- The last row has one column (<td>) for the Submit button -->
+    <table>
+        <!-- The th:field attribute is for the getters and setters in the PersonForm class (not visible in the browser) -->
+        <!-- The th:if attribute is fot checking for errors (not visible in the browser) -->
+        <!-- The th:errors attribute is for displaying error messages (not visible in the browser) -->
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input type="text" th:field="*{age}" /></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
